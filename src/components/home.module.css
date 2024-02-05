@@ -1,0 +1,261 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#nav {
+  height: 11vh;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#nav > .link1 {
+  text-decoration: none;
+  color: white;
+  font-size: 17px;
+}
+#nav > .search {
+  height: 47%;
+  width: 30%;
+  /* background-color: red; */
+  display: flex;
+  justify-content: end;
+}
+#nav > .search > input {
+  height: 100%;
+  width: 80%;
+  border: none;
+  border-radius: 6px;
+  padding-left: 5px;
+  font-size: 12px;
+}
+#nav > .search > input:focus {
+  outline: none;
+}
+#nav > .search > button {
+  height: 100%;
+  margin-left: 1%;
+  width: 20%;
+  border-radius: 20px;
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+  font-size: 12px;
+}
+#nav > .search > button:hover {
+  cursor: pointer;
+}
+#createuser,
+#users {
+  height: 89vh;
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  /* margin-top: 50px; */
+  /* background: linear-gradient(rgb(231, 229, 225),rgb(190, 186, 186)); */
+  background-color: #9ade7b;
+  flex-wrap: wrap;
+}
+#createuser > .image {
+  height: 100%;
+  width: 52%;
+  display: flex;
+  align-items: center;
+  /* border: 2px solid black; */
+}
+#createuser > .image > img {
+  height: 75%;
+  width: 75%;
+}
+
+#createuser > .form {
+  height: 63%;
+  width: 40%;
+  border: 2px solid gray;
+  margin-top: 5%;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+#createuser > .form > h1 {
+  margin-bottom: 2%;
+  font-size: 22px;
+}
+#createuser > .form > table {
+  height: 60%;
+  width: 80%;
+  font-size: 17px;
+  /* background-color: aqua; */
+}
+#createuser > .form > table > tr {
+  height: 20%;
+  /* background-color: red; */
+}
+#createuser > .form > table > tr > td {
+  padding-right: 2%;
+}
+#createuser > .form > table > tr > td > label {
+  margin-right: 2%;
+}
+#createuser > .form > table > tr > .td {
+  width: 16%;
+}
+#createuser > .form > table > tr > td > input {
+  height: 55%;
+  width: 95%;
+  border-radius: 5px;
+  padding-left: 1%;
+  font-size: 15px;
+  border: none;
+  box-shadow: 0px 0px 10px black;
+  margin-left: 2%;
+}
+#createuser > .form > table > tr > td > input:focus {
+  outline: none;
+}
+#createuser > .form > button {
+  height: 29px;
+  width: 15%;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  font-size: 11px;
+}
+#createuser > .form > button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: 0.4s;
+}
+#createuser > .form > table {
+  font-size: small;
+}
+#createuser > .form > table > tr > td > input {
+  height: 40%;
+  font-size: small;
+  width: 100%;
+}
+
+#users {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  height: 89vh;
+  background-color: white;
+}
+#users > .userdetails:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+#users > .userdetails {
+  margin-top: 20px;
+  height: 180px;
+  width: 230px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px #092635;
+  justify-content: center;
+  line-height: 35px;
+  padding-top: 10px;
+  padding-left: 10px;
+  background-color: white;
+}
+#users > .userdetails > .btn {
+  margin-top: 17px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+#users > .userdetails > .btn > button {
+  height: 25px;
+  width: 35%;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px whitesmoke;
+  font-size: 13px;
+}
+#users > .userdetails > .btn > button > .link {
+  color: white;
+  text-decoration: none;
+  height: 25px;
+  width: 100%;
+}
+#users > .userdetails > .btn > button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: 0.5s;
+}
+#users > h1 {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (width <= 1106px) {
+  #createuser > .image {
+    width: 35%;
+    height: 80%;
+  }
+  #createuser > .form {
+    width: 40%;
+  }
+  #createuser > .form > table > tr label {
+    display: none;
+  }
+}
+
+@media (width <= 1106px) {
+  #createuser {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (width <= 731px) {
+  #createuser > .form {
+    width: 80%;
+  }
+  #createuser > .image {
+    display: none;
+  }
+  #users > .userdetails{
+    width: 66%;
+    height: 23%;
+  }
+  #nav>.link1{
+    font-size: 10px;
+  }
+  #nav>.search{
+    height: 30%;
+    width: 50%;
+
+  }
+  #nav>.search>input{
+    font-size: 10px;
+    width: 70%;
+  }
+  #nav>.search>input::placeholder{
+    font-size: 8px;
+  }
+  #nav>.search>button{
+    font-size: 10px;
+    width: 25%;
+    margin-left: 3%;
+  }
+  #createuser > .form > button {
+    font-size: small;
+    width: 70px;
+    height: 7%;
+  }
+}
+@media (min-width: 1115px) {
+  #createuser > .form > table > tr > td > input::placeholder {
+    content-visibility: hidden;
+  }
+}
