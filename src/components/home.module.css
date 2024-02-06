@@ -220,7 +220,6 @@
     display: none;
   }
 }
-
 @media (width <= 769px) {
   #createuser{
     display: flex;
@@ -240,8 +239,11 @@
     display: none;
   }
   #users > .userdetails{
-    width: 66%;
-    height: 23%;
+    width: 51%;
+    height: 28%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
   #nav{
     display: flex;
@@ -276,5 +278,14 @@
 @media (min-width: 1115px) {
   #createuser > .form > table > tr > td > input::placeholder {
     content-visibility: hidden;
+  }
+}
+@media (width <= 500px){
+  #users > .userdetails{
+    width: 66%;
+    height: 28%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
 }
