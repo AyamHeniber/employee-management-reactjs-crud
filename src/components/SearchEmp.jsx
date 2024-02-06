@@ -2,50 +2,88 @@ import React, { useEffect, useState } from "react";
 import style from "./home.module.css";
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import userData from "./userData.json";
 
 const SearchEmp = () => {
   const navigate = useNavigate();
   const userName = useLocation().state;
   console.log(userName);
-  const [userData, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/employees`)
-      .then((response) => {
-        setData(response.data);
-        setLoading(false);
-        const foundUser = response.data.find(
-          (user) =>
-          user.id.toUpperCase()===userName.toUpperCase()||
-            user.Empname.toUpperCase() === userName.toUpperCase() ||
-            user.Empsalary.toString() === userName.toString() ||
-            user.Empcompany.toUpperCase() === userName.toUpperCase()
-        );
-        setNotFound(!foundUser);
-      })
-      .catch((error) => {
-        console.error("Error Fetch Data", error);
-        setLoading(false);
-      });
+    const foundUser = userData.find(
+      (user) =>
+        user.id.toUpperCase() === userName.toUpperCase() ||
+        user.Empname.toUpperCase() === userName.toUpperCase() ||
+        user.Empsalary.toString() === userName.toString() ||
+        user.Empcompany.toUpperCase() === userName.toUpperCase()
+    );
+    setNotFound(!foundUser);
+    console.log(foundUser);
   }, [userName]);
 
-  const deleteHandler = (id) => {
-    axios
-      .delete(`http://localhost:5000/employees/${id}`)
-      .then(() => {
-        console.log("Delete Data Successfully");
-        setNotFound(true);
-      })
-      .catch((error) => {
-        console.error("Error Deleting Data", error);
-      });
-  };
+  // useEffect(() => {
+  // axios
+  // .get(`http://localhost:5000/employees`)
+  // .then((response) => {
+  // setData(response.data);
+  // setLoading(false);
+  // const foundUser = response.data.find(
+  // (user) =>
+  // user.id.toUpperCase()===userName.toUpperCase()||
+  // user.Empname.toUpperCase() === userName.toUpperCase() ||
+  // user.Empsalary.toString() === userName.toString() ||
+  // user.Empcompany.toUpperCase() === userName.toUpperCase()
+  // );
+  // setNotFound(!foundUser);
+  // })
+  // .catch((error) => {
+  // console.error("Error Fetch Data", error);
+  // setLoading(false);
+  // });
+  // }, [userName]);
 
-  const usersall = userData.map((ele) => {
+  // const deleteHandler = (id) => {
+  // axios
+  // .delete(`http://localhost:5000/employees/${id}`)
+  // .then(() => {
+  // console.log("Delete Data Successfully");
+  // setNotFound(true);
+  // })
+  // .catch((error) => {
+  // console.error("Error Deleting Data", error);
+  // });
+  // };
+  //  console.log(notFound);
+
+  const usersall=userData.map((ele) => {
+    const deleteHandler = (e) => {
+      const divli = document.getElementById(`id-${ele.id}`);
+      divli.remove();
+      // axios
+      // .delete(`http://localhost:5000/employees/${ele.id}`)
+      // .then(() => {
+      // console.log("Delete Data Successfully");
+      // })
+      // .catch(() => {
+      // console.log("Errorr Delete Data");
+      // });
+      // setData(userData);
+      let objectToRemove = {
+        Empname: `${ele.Empname}`,
+        Empsalary: `${ele.Empsalary}`,
+        Empcompany: `${ele.Empcompany}`,
+        id: `${ele.id}`,
+      };
+      // Using filter to remove the object from the array
+      userData = userData.filter(
+        (item) => JSON.stringify(item) !== JSON.stringify(objectToRemove)
+      );
+      //  setNotFound(true);
+    };
     if (
-        ele.id.toUpperCase()===userName.toUpperCase()||
+      ele.id.toUpperCase() === userName.toUpperCase() ||
       ele.Empname.toUpperCase() === userName.toUpperCase() ||
       ele.Empsalary.toString() === userName.toString() ||
       ele.Empcompany.toUpperCase() === userName.toUpperCase()
@@ -61,19 +99,16 @@ const SearchEmp = () => {
                 Edit
               </Link>
             </button>
-            <button onClick={() => deleteHandler(ele.id)}>Delete</button>
+            <button onClick={deleteHandler}>Delete</button>
           </div>
         </div>
       );
-    } else {
-      return null;
     }
-  });
-
+  })
   return (
     <div id={style.users}>
-      {!loading && !notFound && usersall}
-      {!loading && notFound && <h1>User not found...</h1>}
+      {!notFound && usersall}
+      {notFound && <h1>User not found...</h1>}
     </div>
   );
 };

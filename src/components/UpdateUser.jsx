@@ -2,30 +2,39 @@ import React, { useEffect, useState } from "react";
 import style from "./home.module.css";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-// import { useLocation } from "react-router-dom";
+import userData from "./userData.json"
+
 const UpdateUser = () => {
   const navigate = useNavigate();
-  // const data=useLocation().state
-  // const [name, setName] = useState(data[0]);
-  // const [salary, setSalary] = useState(data[1]);
-  // const [company, setCompany] = useState(data[2]);
+  
   const userId = useParams();
+
   const [name, setName] = useState("");
   const [salary, setSalary] = useState("");
   const [company, setCompany] = useState("");
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/employees/${userId.abc}`)
-      .then((res) => {
-        setName(res.data.Empname);
-        setSalary(res.data.Empsalary);
-        setCompany(res.data.Empcompany);
-      })
-      .catch(() => {
-        console.log("errrorr");
-      });
-  }, []);
+// 
+  // useEffect(() => {
+    // axios
+      // .get(`http://localhost:5000/employees/${userId.abc}`)
+      // .then((res) => {
+        // setName(res.data.Empname);
+        // setSalary(res.data.Empsalary);
+        // setCompany(res.data.Empcompany);
+      // })
+      // .catch(() => {
+        // console.log("errrorr");
+      // });
+  // }, []);
+  useEffect(()=>{
+    userData.map((ele)=>{
+      if(ele.id===userId.abc)
+      {
+        setName(ele.Empname);
+        setSalary(ele.Empsalary);
+        setCompany(ele.Empcompany);
+      }
+    })
+  },[])
 
   const getName = (e) => {
     setName(e.target.value);
@@ -45,19 +54,28 @@ const UpdateUser = () => {
     } else if (company === "") {
       alert("Please Type the Company Name");
     } else {
-      let payload = {
-        Empname: name,
-        Empsalary: salary,
-        Empcompany: company,
-      };
-      axios
-        .put(`http://localhost:5000/employees/${userId.abc}`, payload)
-        .then(() => {
-          console.log("Data has been stored");
-        })
-        .catch(() => {
-          console.log("error");
-        });
+      // let payload = {
+        // Empname: name,
+        // Empsalary: salary,
+        // Empcompany: company,
+      // };
+      // axios
+        // .put(`http://localhost:5000/employees/${userId.abc}`, payload)
+        // .then(() => {
+          // console.log("Data has been stored");
+        // })
+        // .catch(() => {
+          // console.log("error");
+        // });
+          userData.map((ele)=>{
+            if(ele.id===userId.abc)
+            {
+                ele.Empname= name
+                ele.Empsalary= salary
+                ele.Empcompany= company
+            }
+          })
+        
       setName("");
       setSalary("");
       setCompany("");

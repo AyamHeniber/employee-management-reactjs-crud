@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import style from "./home.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import userData from "./userData.json"
 const CreateUser = () => {
   const [name, setName] = useState("");
   const [salary, setSalary] = useState("");
   const [company, setCompany] = useState("");
   const [id, setId] = useState(0);
-  const [userData, setUserData] = useState([]);
+  // const [userData1, setUserData] = useState(userData);
 
   const navigate=useNavigate()
 
@@ -37,14 +38,16 @@ const CreateUser = () => {
         Empsalary: salary,
         Empcompany: company,
       };
-      axios
-        .post("http://localhost:5000/employees", payload)
-        .then(() => {
-          console.log("Data has been stored");
-        })
-        .catch(() => {
-          console.log("error");
-        })
+      // axios
+        // .post("http://localhost:5000/employees", payload)
+        // .then(() => {
+          // console.log("Data has been stored");
+        // })
+        // .catch(() => {
+          // console.log("error");
+        // })
+
+        userData.unshift(payload);
 
       setName("");
       setSalary("");
