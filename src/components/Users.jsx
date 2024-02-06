@@ -26,6 +26,10 @@ const Users = () => {
       // });
   // }, []);
 
+  // useEffect(()=>{userData.map(ele=>{
+    // console.log(ele);
+  // })},[])
+
   const usersall = userData.map((ele, index) => {
 
     const deleteHandler = (e) => {

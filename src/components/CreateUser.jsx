@@ -33,7 +33,20 @@ const CreateUser = () => {
     } else if (company === "") {
       alert("Please Type the Company Name");
     } else {
+      function generateRandomId(length) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let id = '';
+        for (let i = 0; i < length; i++) {
+            id += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return id;
+    }
+    
+    // Generate a random ID with length 4
+    const randomId = generateRandomId(4);
+    
       let payload = {
+        id:randomId,
         Empname: name,
         Empsalary: salary,
         Empcompany: company,
