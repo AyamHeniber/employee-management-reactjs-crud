@@ -83,6 +83,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+
 }
 #createuser > .form > h1 {
   margin-bottom: 2%;
@@ -92,6 +93,7 @@
   height: 60%;
   width: 80%;
   font-size: 17px;
+  
   /* background-color: aqua; */
 }
 #createuser > .form > table > tr {
@@ -199,27 +201,40 @@
 }
 
 @media (width <= 1106px) {
+  #nav>.search{
+    height: 35%;
+    width: 50%;
+  }
   #createuser > .image {
-    width: 35%;
-    height: 80%;
+    width: 45%;
+    height:65%;
   }
   #createuser > .form {
     width: 40%;
+  }
+  #createuser > .form>table{
+    /* background-color: aqua; */
+    padding-right: 10%;
   }
   #createuser > .form > table > tr label {
     display: none;
   }
 }
 
-@media (width <= 1106px) {
-  #createuser {
+@media (width <= 769px) {
+  #createuser{
     display: flex;
     justify-content: center;
+    background-color: white;
   }
-}
-@media (width <= 731px) {
   #createuser > .form {
     width: 80%;
+    /* background-color: red; */
+    border: none;
+  }
+  #createuser > .form>table{
+    /* background-color: aqua; */
+    padding-right: 10%;
   }
   #createuser > .image {
     display: none;
@@ -228,25 +243,29 @@
     width: 66%;
     height: 23%;
   }
+  #nav{
+    display: flex;
+  }
   #nav>.link1{
-    font-size: 10px;
+    font-size: 13px;
   }
   #nav>.search{
-    height: 30%;
-    width: 50%;
+    height: 25%;
+    width: 54%;
+    margin-right: 8%;
 
   }
   #nav>.search>input{
     font-size: 10px;
-    width: 70%;
+    width: 60%;
   }
   #nav>.search>input::placeholder{
-    font-size: 8px;
+    font-size: 7px;
   }
   #nav>.search>button{
     font-size: 10px;
-    width: 25%;
-    margin-left: 3%;
+    width: 20%;
+    margin-left: 2%;
   }
   #createuser > .form > button {
     font-size: small;
